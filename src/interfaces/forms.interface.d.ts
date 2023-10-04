@@ -1,3 +1,6 @@
+// Types
+import { Visibility } from "../types/enums.type";
+
 export interface FormSignUp {
   firstName: string;
   lastName: string;
@@ -9,7 +12,14 @@ export interface FormSignUp {
 }
 
 export interface FormLogin {
-  username: string
-  password: string
-  rememberMe: boolean
+  username: string;
+  password: string;
+  rememberMe: boolean;
+}
+
+export interface FormCreatePost {
+  title: string;
+  description: string;
+  visibility: Visibility;
+  photo?: string;
 }

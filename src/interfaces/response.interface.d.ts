@@ -12,3 +12,7 @@ export interface ResponseLogin {
 export interface ResponseCreateUser extends ResponseLogin {
   message: string;
 }
+
+export interface ResponseCreatePost {
+  message: string;
+}
