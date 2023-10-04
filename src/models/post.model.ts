@@ -11,6 +11,9 @@ import {
   UpdateDateColumn,
 } from "typeorm";
 
+// Types
+import { Visibility } from "../types/enums.type";
+
 //Models
 import { UserModel } from "./user.model";
 import { CommentModel } from "./comment.model";
@@ -27,6 +30,13 @@ export class PostModel extends BaseEntity {
   description: string;
 
   @Column({
+    type: "enum",
+    enum: Visibility,
+    default: Visibility.PRIVATE,
+  })
+  visibility: Visibility;
+
+  @Column({
     nullable: true,
   })
   photo?: string;
@@ -38,10 +48,7 @@ export class PostModel extends BaseEntity {
   @JoinColumn({ name: "userId" })
   userId: number | UserModel;
 
-  @OneToMany(() => CommentModel, (comment) => comment.postId, {
-    cascade: true,
-    nullable: true,
-  })
+  @OneToMany(() => CommentModel, (comment) => comment.postId)
   comments: CommentModel[];
 
   @CreateDateColumn()

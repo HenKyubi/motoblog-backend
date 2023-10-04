@@ -1,13 +1,10 @@
+// Types
 import { Response } from "express";
 
-const handdleError = (res: Response, error: string, errorCode?: number) => {
-  if (errorCode !== undefined) {
-    res.status(errorCode);
-  } else {
-    res.status(500);
-  }
-
-  res.send({ error });
+export const handleError = (
+  res: Response,
+  error: string,
+  errorCode?: number
+) => {
+  res.status(errorCode || 500).send({ message: error });
 };
-
-export { handdleError };

@@ -5,6 +5,9 @@ import { DataSource } from "typeorm";
 import { DB_PORT, DB_USER, DB_PASSWORD, DB_NAME, DB_HOST } from "./config";
 
 //Models
+import { UserModel } from "../models/user.model";
+import { PostModel } from "../models/post.model";
+import { CommentModel } from "../models/comment.model";
 
 export const AppDataSource = new DataSource({
   type: "mysql",
@@ -15,5 +18,5 @@ export const AppDataSource = new DataSource({
   database: DB_NAME,
   synchronize: true,
   logging: true,
-  entities: [],
+  entities: [UserModel, PostModel, CommentModel],
 });

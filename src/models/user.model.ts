@@ -44,13 +44,11 @@ export class UserModel extends BaseEntity {
   //Relations
   @OneToMany(() => PostModel, (post) => post.userId, {
     nullable: true,
-    cascade: true,
   })
   posts?: PostModel[];
 
   @OneToMany(() => CommentModel, (comment) => comment.userId, {
     nullable: true,
-    cascade: true,
   })
   comments?: CommentModel[];
 
