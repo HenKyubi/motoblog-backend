@@ -26,9 +26,9 @@ export const createPostController = async (
 
     await createPostService(postData, userId);
 
-    const response: ResponseCreatePost = { message: "Post created!" };
+    const response: ResponseCreatePost = { message: "Post created!." };
 
-    return res.send(response);
+    return res.status(201).send(response);
   } catch (error) {
     handleError(res, `${error}`);
   }

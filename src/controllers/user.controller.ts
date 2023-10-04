@@ -5,12 +5,14 @@ import {
   RequestSignUp,
 } from "../interfaces/request.interface";
 import { ResponseCreateUser } from "../interfaces/response.interface";
+import { FormSignUp } from "../interfaces/forms.interface";
+
+// Utils
+import { handleError } from "../utils/error.handle";
+import { generateToken } from "../utils/jwt.handle";
 
 // Services
 import { createUserService } from "../services/user.service";
-import { handleError } from "../utils/error.handle";
-import { FormSignUp } from "../interfaces/forms.interface";
-import { generateToken } from "../utils/jwt.handle";
 
 export const createUserController = async (
   req: RequestSignUp,
@@ -35,7 +37,7 @@ export const createUserController = async (
     });
 
     const response: ResponseCreateUser = {
-      message: "User registered.",
+      message: "User registered!.",
       token,
       userData: {
         firstName: newUser.firstName,

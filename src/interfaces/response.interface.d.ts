@@ -13,6 +13,10 @@ export interface ResponseCreateUser extends ResponseLogin {
   message: string;
 }
 
-export interface ResponseCreatePost {
+export interface ResponseBase {
   message: string;
 }
+
+export interface ResponseCreatePost extends ResponseBase {}
+
+export interface ResponseCreateComment extends ResponseBase {}

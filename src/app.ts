@@ -20,6 +20,6 @@ app.use(cors());
 app.use("/api/login", authRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/post", postRoutes);
-app.use("/api/user/post/comment", commentRoutes);
+app.use("/api/post/:id/comment", commentRoutes);
 
 export default app;

@@ -1,7 +1,12 @@
 // Types
 import { Request } from "express";
 import { JWTMock } from "./jwt.interface";
-import { FormCreatePost, FormLogin, FormSignUp } from "./forms.interface";
+import {
+  FormCreateComment,
+  FormCreatePost,
+  FormLogin,
+  FormSignUp,
+} from "./forms.interface";
 
 export interface RequestAuth extends Request {
   user?: JWTMock;
@@ -19,4 +24,8 @@ export interface RequestLogin extends Request {
 
 export interface RequestCreatePost extends RequestAuth {
   body: FormCreatePost;
+}
+
+export interface RequestCreateComment extends RequestAuth {
+  body: FormCreateComment;
 }

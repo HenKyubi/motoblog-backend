@@ -23,3 +23,7 @@ export interface FormCreatePost {
   visibility: Visibility;
   photo?: string;
 }
+
+export interface FormCreateComment {
+  comment: string;
+}
