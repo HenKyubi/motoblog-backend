@@ -41,6 +41,9 @@ export class UserModel extends BaseEntity {
   @Column()
   password: string;
 
+  @Column({ nullable: true })
+  photo?: string;
+
   //Relations
   @OneToMany(() => PostModel, (post) => post.userId, {
     nullable: true,
