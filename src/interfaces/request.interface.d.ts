@@ -8,6 +8,7 @@ import {
   FormSignUp,
   FormUpdateComment,
   FormUpdatePost,
+  FormUpdateUser,
 } from "./forms.interface";
 import { UserModel } from "../models/user.model";
 
@@ -96,4 +97,12 @@ export interface RequestMatchUserByUsername extends RequestAuth {
     username: string;
   };
   usr?: UserModel;
+}
+
+export interface RequestUpdateUser extends RequestMatchUserByUsername {
+  body: FormUpdateUser;
+}
+
+export interface RequestDeleteUser extends RequestMatchUserByUsername {
+  body: {};
 }

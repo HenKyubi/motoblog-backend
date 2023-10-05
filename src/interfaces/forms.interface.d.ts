@@ -38,3 +38,14 @@ export interface FormUpdatePost {
   visibility?: Visibility;
   photo?: string;
 }
+
+export interface FormUpdateUser {
+  firstName?: string;
+  lastName?: string;
+  country?: string;
+  countryCode?: string;
+  phoneNumber?: string;
+  username?: string;
+  password?: string;
+  photo?: string;
+}
