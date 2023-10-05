@@ -3,6 +3,8 @@ import { Request, Response } from "express";
 import {
   RequestCreatePost,
   RequestDeletePost,
+  RequestGetPost,
+  RequestGetPosts,
   RequestUpdatePost,
 } from "../interfaces/request.interface";
 import { ResponseCreatePost } from "../interfaces/response.interface";
@@ -45,7 +47,10 @@ export const createPostController = async (
   }
 };
 
-export const getPostsController = async (req: Request, res: Response) => {
+export const getPostsController = async (
+  req: RequestGetPosts,
+  res: Response
+) => {
   try {
     const posts = await getPostsService();
 
@@ -55,9 +60,12 @@ export const getPostsController = async (req: Request, res: Response) => {
   }
 };
 
-export const getPostByIdController = async (req: Request, res: Response) => {
+export const getPostByIdController = async (
+  req: RequestGetPost,
+  res: Response
+) => {
   try {
-    const postId = parseInt(req.params.id);
+    const postId = req.params.id;
 
     const post = await getPostByIdService(postId);
 
@@ -93,7 +101,7 @@ export const updatePostController = async (
 
     await updatePostService(postId, postUpdate);
 
-    return res.send({ message: "Post updated!" });
+    return res.send({ message: "Post updated!." });
   } catch (error) {
     handleError(res, `${error}`);
   }
@@ -108,7 +116,7 @@ export const deletePostController = async (
 
     await deletePostService(postId);
 
-    return res.send({ message: "Post deleted!" });
+    return res.send({ message: "Post deleted!." });
   } catch (error) {
     handleError(res, `${error}`);
   }

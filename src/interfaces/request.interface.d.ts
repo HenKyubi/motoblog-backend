@@ -28,8 +28,21 @@ export interface RequestCreatePost extends RequestAuth {
   body: FormCreatePost;
 }
 
+export interface RequestGetPost extends RequestAuth {
+  body: {};
+  params: {
+    id: number;
+  };
+}
+
+export interface RequestGetPosts extends RequestAuth {
+  body: {};
+  params: {};
+}
+
 export interface RequestMatchPostUser extends RequestAuth {
   post?: any;
+  params: { id: number };
 }
 
 export interface RequestUpdatePost extends RequestMatchPostUser {
