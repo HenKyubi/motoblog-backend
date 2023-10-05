@@ -2,7 +2,6 @@
 import { NextFunction, Response } from "express";
 import {
   RequestMatchPostUser,
-  RequestUpdatePost,
 } from "../interfaces/request.interface";
 import { UserModel } from "../models/user.model";
 

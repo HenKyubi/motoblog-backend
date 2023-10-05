@@ -9,6 +9,7 @@ import {
   FormUpdateComment,
   FormUpdatePost,
 } from "./forms.interface";
+import { UserModel } from "../models/user.model";
 
 export interface RequestAuth extends Request {
   user?: JWTMock;
@@ -17,8 +18,6 @@ export interface RequestAuth extends Request {
 export interface RequestSignUp extends Request {
   body: FormSignUp;
 }
-
-export interface RequestGetUserById extends RequestAuth {}
 
 export interface RequestLogin extends Request {
   body: FormLogin;
@@ -31,7 +30,7 @@ export interface RequestCreatePost extends RequestAuth {
 export interface RequestGetPost extends RequestAuth {
   body: {};
   params: {
-    id: number;
+    id: string;
   };
 }
 
@@ -42,7 +41,7 @@ export interface RequestGetPosts extends RequestAuth {
 
 export interface RequestMatchPostUser extends RequestAuth {
   post?: any;
-  params: { id: number };
+  params: { id: string };
 }
 
 export interface RequestUpdatePost extends RequestMatchPostUser {
@@ -56,29 +55,29 @@ export interface RequestDeletePost extends RequestMatchPostUser {
 export interface RequestCreateComment extends RequestAuth {
   body: FormCreateComment;
   params: {
-    id: number;
+    id: string;
   };
 }
 
 export interface RequestGetComment extends RequestAuth {
   body: {};
   params: {
-    commentId: number;
+    commentId: string;
   };
 }
 
 export interface RequestGetComments extends RequestAuth {
   body: {};
   params: {
-    id: number;
+    id: string;
   };
 }
 
 export interface RequestMatchComment extends RequestAuth {
   comment?: any;
   params: {
-    id: number;
-    commentId: number;
+    id: string;
+    commentId: string;
   };
 }
 
@@ -88,4 +87,13 @@ export interface RequestUpdateComment extends RequestMatchComment {
 
 export interface RequestDeleteComment extends RequestMatchComment {
   body: {};
+}
+
+export interface RequestGetUserByUsername extends RequestMatchUserByUsername {}
+
+export interface RequestMatchUserByUsername extends RequestAuth {
+  params: {
+    username: string;
+  };
+  usr?: UserModel;
 }

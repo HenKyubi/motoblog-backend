@@ -4,13 +4,18 @@ import { Router } from "express";
 import { checkJwt } from "../middlewares/checkSession.middleware";
 
 //Controllers
-import { createUserController } from "../controllers/user.controller";
+import {
+  createUserController,
+  getUserController,
+  getUsersController,
+} from "../controllers/user.controller";
+import { matchUserByUsername } from "../middlewares/matchUserByUsername.middleware";
 
 //Routes
 export const userRoutes = Router();
 
 userRoutes.get("/", checkJwt);
-userRoutes.get("/:id");
+userRoutes.get("/:username", checkJwt,matchUserByUsername, getUserController);
 userRoutes.post("/", createUserController);
-userRoutes.put("/:id", checkJwt);
-userRoutes.delete("/:id", checkJwt);
+userRoutes.put("/:username", checkJwt);
+userRoutes.delete("/:username", checkJwt);

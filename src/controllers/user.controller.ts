@@ -1,10 +1,13 @@
 // Types
 import { Response } from "express";
 import {
-  RequestGetUserById,
+  RequestGetUserByUsername,
   RequestSignUp,
 } from "../interfaces/request.interface";
-import { ResponseCreateUser } from "../interfaces/response.interface";
+import {
+  ResponseCreateUser,
+  ResponseGetUserByUsername,
+} from "../interfaces/response.interface";
 import { FormSignUp } from "../interfaces/forms.interface";
 
 // Utils
@@ -55,6 +58,26 @@ export const createUserController = async (
 };
 
 export const getUserController = async (
-  req: RequestGetUserById,
+  req: RequestGetUserByUsername,
   res: Response
-) => {};
+) => {
+  try {
+    const tempUserData = req.usr!;
+
+    const response: ResponseGetUserByUsername = {
+      userData: {
+        firstName: tempUserData.firstName,
+        username: tempUserData.username,
+        lastName: tempUserData.lastName,
+        country: tempUserData.country,
+        photo: tempUserData?.photo,
+      },
+    };
+
+    return res.send(response);
+  } catch (error) {
+    handleError(res, `${error}`);
+  }
+};
+
+export const getUsersController = async (req: Request, res: Response) => {};

@@ -34,7 +34,7 @@ export const createCommentController = async (
 
     const { userId } = req.user!;
 
-    const postId = req.params.id;
+    const postId = parseInt(req.params.id);
 
     await createCommentService(commentData, postId, userId);
 
@@ -54,7 +54,7 @@ export const getCommentsController = async (
 ) => {
   try {
     // Get data for use service
-    const postId = req.params.id;
+    const postId = parseInt(req.params.id);
 
     const response = await getCommentsService(postId);
 
@@ -70,7 +70,7 @@ export const getCommentByIdController = async (
 ) => {
   try {
     // Get data for use service
-    const { commentId } = req.params;
+    const commentId = parseInt(req.params.commentId);
     const response = await getCommentByIdService(commentId);
 
     if (!response) {
@@ -89,7 +89,8 @@ export const updateCommentByIdController = async (
 ) => {
   try {
     // Get data for use service
-    const { commentId } = req.params;
+    const commentId = parseInt(req.params.commentId);
+
     const commentUpdate = {
       comment: req.body?.comment,
     };
@@ -108,7 +109,7 @@ export const deleteCommentByIdController = async (
 ) => {
   try {
     // Get data for use service
-    const { commentId } = req.params;
+    const commentId = parseInt(req.params.commentId);
 
     const response = await deleteCommentByIdService(commentId);
 

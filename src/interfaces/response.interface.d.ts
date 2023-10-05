@@ -20,3 +20,13 @@ export interface ResponseBase {
 export interface ResponseCreatePost extends ResponseBase {}
 
 export interface ResponseCreateComment extends ResponseBase {}
+
+export interface ResponseGetUserByUsername {
+  userData: {
+    firstName: string;
+    lastName: string;
+    country: string;
+    username: string;
+    photo?: string;
+  };
+}

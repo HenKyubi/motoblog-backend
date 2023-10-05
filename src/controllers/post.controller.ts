@@ -65,7 +65,7 @@ export const getPostByIdController = async (
   res: Response
 ) => {
   try {
-    const postId = req.params.id;
+    const postId = parseInt(req.params.id);
 
     const post = await getPostByIdService(postId);
 
