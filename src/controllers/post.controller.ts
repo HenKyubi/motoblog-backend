@@ -1,6 +1,9 @@
 // Types
-import { Response } from "express";
-import { RequestCreatePost } from "../interfaces/request.interface";
+import { Request, Response } from "express";
+import {
+  RequestAuth,
+  RequestCreatePost,
+} from "../interfaces/request.interface";
 import { ResponseCreatePost } from "../interfaces/response.interface";
 import { FormCreatePost } from "../interfaces/forms.interface";
 
@@ -8,7 +11,11 @@ import { FormCreatePost } from "../interfaces/forms.interface";
 import { handleError } from "../utils/error.handle";
 
 // Services
-import { createPostService } from "../services/post.service";
+import {
+  createPostService,
+  getPostsService,
+  getPublicPostsService,
+} from "../services/post.service";
 
 export const createPostController = async (
   req: RequestCreatePost,
@@ -29,6 +36,47 @@ export const createPostController = async (
     const response: ResponseCreatePost = { message: "Post created!." };
 
     return res.status(201).send(response);
+  } catch (error) {
+    handleError(res, `${error}`);
+  }
+};
+
+export const getPostsController = async (req: Request, res: Response) => {
+  try {
+    const posts = await getPostsService();
+
+    return res.status(200).send(posts);
+  } catch (error) {
+    handleError(res, `${error}`);
+  }
+};
+
+export const getPostByIdController = async (req: Request, res: Response) => {
+  try {
+  } catch (error) {
+    handleError(res, `${error}`);
+  }
+};
+
+export const getPublicPostsController = async (req: Request, res: Response) => {
+  try {
+    const posts = await getPublicPostsService();
+
+    return res.status(200).send(posts);
+  } catch (error) {
+    handleError(res, `${error}`);
+  }
+};
+
+export const updatePostController = async (req: Request, res: Response) => {
+  try {
+  } catch (error) {
+    handleError(res, `${error}`);
+  }
+};
+
+export const deletePostController = async (req: Request, res: Response) => {
+  try {
   } catch (error) {
     handleError(res, `${error}`);
   }
