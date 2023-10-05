@@ -1,11 +1,12 @@
 // Types
 import { Request, Response } from "express";
 import {
-  RequestAuth,
   RequestCreatePost,
+  RequestDeletePost,
+  RequestUpdatePost,
 } from "../interfaces/request.interface";
 import { ResponseCreatePost } from "../interfaces/response.interface";
-import { FormCreatePost } from "../interfaces/forms.interface";
+import { FormCreatePost, FormUpdatePost } from "../interfaces/forms.interface";
 
 // Utils
 import { handleError } from "../utils/error.handle";
@@ -13,8 +14,11 @@ import { handleError } from "../utils/error.handle";
 // Services
 import {
   createPostService,
+  deletePostService,
+  getPostByIdService,
   getPostsService,
   getPublicPostsService,
+  updatePostService,
 } from "../services/post.service";
 
 export const createPostController = async (
@@ -53,6 +57,11 @@ export const getPostsController = async (req: Request, res: Response) => {
 
 export const getPostByIdController = async (req: Request, res: Response) => {
   try {
+    const postId = parseInt(req.params.id);
+
+    const post = await getPostByIdService(postId);
+
+    return res.send(post);
   } catch (error) {
     handleError(res, `${error}`);
   }
@@ -68,15 +77,38 @@ export const getPublicPostsController = async (req: Request, res: Response) => {
   }
 };
 
-export const updatePostController = async (req: Request, res: Response) => {
+export const updatePostController = async (
+  req: RequestUpdatePost,
+  res: Response
+) => {
   try {
+    const postUpdate: FormUpdatePost = {
+      title: req.body?.title,
+      description: req.body?.description,
+      visibility: req.body?.visibility,
+      photo: req.body?.photo,
+    };
+
+    const postId = req.post.id;
+
+    await updatePostService(postId, postUpdate);
+
+    return res.send({ message: "Post updated!" });
   } catch (error) {
     handleError(res, `${error}`);
   }
 };
 
-export const deletePostController = async (req: Request, res: Response) => {
+export const deletePostController = async (
+  req: RequestDeletePost,
+  res: Response
+) => {
   try {
+    const postId = req.post.id;
+
+    await deletePostService(postId);
+
+    return res.send({ message: "Post deleted!" });
   } catch (error) {
     handleError(res, `${error}`);
   }

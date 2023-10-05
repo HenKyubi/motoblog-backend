@@ -44,20 +44,22 @@ export class UserModel extends BaseEntity {
   @Column({ nullable: true })
   photo?: string;
 
-  //Relations
-  @OneToMany(() => PostModel, (post) => post.userId, {
-    nullable: true,
-  })
-  posts?: PostModel[];
-
-  @OneToMany(() => CommentModel, (comment) => comment.userId, {
-    nullable: true,
-  })
-  comments?: CommentModel[];
-
   @CreateDateColumn()
   createAt: Date;
 
   @UpdateDateColumn()
   updateAt: Date;
+
+  //Relations
+  @OneToMany(() => PostModel, (post) => post.user, {
+    nullable: true,
+    onDelete: "CASCADE",
+  })
+  posts?: PostModel[];
+
+  @OneToMany(() => CommentModel, (comment) => comment.user, {
+    nullable: true,
+    onDelete: "CASCADE",
+  })
+  comments?: CommentModel[];
 }

@@ -4,7 +4,6 @@ import {
   Column,
   CreateDateColumn,
   Entity,
-  JoinColumn,
   ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
@@ -22,22 +21,16 @@ export class CommentModel extends BaseEntity {
   @Column()
   comment: string;
 
-  //Relations
-  @ManyToOne(() => PostModel, (post) => post.comments, {
-    cascade: true,
-  })
-  @JoinColumn({ name: "postId" })
-  postId: number | PostModel;
-
-  @ManyToOne(() => UserModel, (user) => user.comments, {
-    cascade: true,
-  })
-  @JoinColumn({ name: "userId" })
-  userId: number | UserModel;
-
   @CreateDateColumn()
   createAt: Date;
 
   @UpdateDateColumn()
   updateAt: Date;
+
+  //Relations
+  @ManyToOne(() => PostModel, (post) => post.comments)
+  post: PostModel;
+
+  @ManyToOne(() => UserModel, (user) => user.comments)
+  user: UserModel;
 }

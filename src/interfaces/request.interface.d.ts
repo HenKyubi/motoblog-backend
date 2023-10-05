@@ -6,6 +6,7 @@ import {
   FormCreatePost,
   FormLogin,
   FormSignUp,
+  FormUpdatePost,
 } from "./forms.interface";
 
 export interface RequestAuth extends Request {
@@ -28,4 +29,16 @@ export interface RequestCreatePost extends RequestAuth {
 
 export interface RequestCreateComment extends RequestAuth {
   body: FormCreateComment;
+}
+
+export interface RequestMatchPostUser extends RequestAuth {
+  post?: any;
+}
+
+export interface RequestUpdatePost extends RequestMatchPostUser {
+  body: FormUpdatePost;
+}
+
+export interface RequestDeletePost extends RequestMatchPostUser {
+  body: {};
 }
