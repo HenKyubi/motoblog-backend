@@ -28,6 +28,10 @@ export interface FormCreateComment {
   comment: string;
 }
 
+export interface FormUpdateComment {
+  comment?: string;
+}
+
 export interface FormUpdatePost {
   title?: string;
   description?: string;
