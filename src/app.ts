@@ -17,7 +17,7 @@ app.use(express.json());
 app.use(cors());
 
 //Use routes
-app.use("/api/login", authRoutes);
+app.use("/api", authRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/post", postRoutes);
 app.use("/api/post/:id/comment", commentRoutes);

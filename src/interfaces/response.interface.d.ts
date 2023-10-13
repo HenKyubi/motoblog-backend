@@ -3,8 +3,6 @@ export interface ResponseLogin {
   userData: {
     firstName: string;
     lastName: string;
-    country: string;
-    phoneNumber: string;
     username: string;
   };
 }
@@ -25,7 +23,6 @@ export interface ResponseGetUserByUsername {
   userData: {
     firstName: string;
     lastName: string;
-    country: string;
     username: string;
     photo?: string;
   };

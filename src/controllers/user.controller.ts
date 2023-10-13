@@ -32,10 +32,7 @@ export const createUserController = async (
     const newUserData: FormSignUp = {
       firstName: req.body.firstName,
       lastName: req.body.lastName,
-      country: req.body.country,
-      countryCode: req.body.countryCode,
       password: req.body.password,
-      phoneNumber: req.body.phoneNumber,
       username: req.body.username,
     };
 
@@ -52,8 +49,6 @@ export const createUserController = async (
       userData: {
         firstName: newUser.firstName,
         lastName: newUser.lastName,
-        country: newUser.country,
-        phoneNumber: newUser.phoneNumber,
         username: newUser.username,
       },
     };
@@ -76,7 +71,6 @@ export const getUserController = async (
         firstName: tempUserData.firstName,
         username: tempUserData.username,
         lastName: tempUserData.lastName,
-        country: tempUserData.country,
         photo: tempUserData?.photo,
       },
     };
@@ -107,12 +101,9 @@ export const updateUserController = async (
     const userUpdate: FormUpdateUser = {
       firstName: req.body?.firstName,
       lastName: req.body?.lastName,
-      country: req.body?.country,
-      countryCode: req.body?.countryCode,
-      password: req.body?.password,
-      phoneNumber: req.body?.phoneNumber,
-      photo: req.body?.photo,
       username: req.body?.username,
+      password: req.body?.password,
+      photo: req.body?.photo,
     };
 
     await updateUserByIdService(userId, userUpdate);

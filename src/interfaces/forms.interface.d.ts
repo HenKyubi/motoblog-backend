@@ -4,9 +4,6 @@ import { Visibility } from "../types/enums.type";
 export interface FormSignUp {
   firstName: string;
   lastName: string;
-  country: string;
-  countryCode: string;
-  phoneNumber: string;
   username: string;
   password: string;
 }
@@ -42,9 +39,6 @@ export interface FormUpdatePost {
 export interface FormUpdateUser {
   firstName?: string;
   lastName?: string;
-  country?: string;
-  countryCode?: string;
-  phoneNumber?: string;
   username?: string;
   password?: string;
   photo?: string;

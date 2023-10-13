@@ -24,15 +24,6 @@ export class UserModel extends BaseEntity {
   @Column()
   lastName: string;
 
-  @Column()
-  country: string;
-
-  @Column()
-  countryCode: string;
-
-  @Column()
-  phoneNumber: string;
-
   @Column({
     unique: true,
   })

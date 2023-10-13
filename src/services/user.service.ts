@@ -123,8 +123,6 @@ export const loginService = async (
         userData: {
           firstName: userData.firstName,
           lastName: userData.lastName,
-          country: userData.country,
-          phoneNumber: userData.phoneNumber,
           username: userData.username,
         },
       };
@@ -218,7 +216,6 @@ export const getUsersService = async (queryRunner?: QueryRunner) => {
           firstName: true,
           username: true,
           lastName: true,
-          country: true,
           photo: true,
         },
         order: {
